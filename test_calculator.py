@@ -22,3 +22,6 @@ def test_power():
 
 def test_modulo():
     assert modulo(10, 3) == 1
+
+def test_modulo_negative():
+    assert modulo(10, -3) == -2
