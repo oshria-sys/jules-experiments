@@ -1,27 +1,26 @@
 import pytest
-from calculator import add, subtract, multiply, divide, power, modulo
-
-def test_add():
-    assert add(2, 3) == 5
-
-def test_subtract():
-    assert subtract(10, 5) == 5
-
-def test_multiply():
-    assert multiply(3, 4) == 12
-
-def test_divide():
-    assert divide(10, 2) == 5
-
-def test_divide_by_zero():
-    with pytest.raises(ZeroDivisionError):
-        divide(10, 0)
-
-def test_power():
-    assert power(2, 3) == 8
-
-def test_modulo():
-    assert modulo(10, 3) == 1
-
-def test_modulo_negative():
-    assert modulo(10, -3) == -2
+from calculator import *
+def test_add_numbers():
+    assert add_numbers(2, 3) == 5
+    assert add_numbers(-1, 1) == 0
+    assert add_numbers(0, 0) == 0
+def test_subtract_numbers():
+    assert subtract_numbers(5, 3) == 2
+    assert subtract_numbers(0, 0) == 0
+    assert subtract_numbers(-1, -1) == 0
+def test_multiply_numbers():
+    assert multiply_numbers(2, 3) == 6
+    assert multiply_numbers(-1, 1) == -1
+    assert multiply_numbers(0, 5) == 0
+def test_divide_numbers():
+    assert divide_numbers(6, 3) == 2
+    assert divide_numbers(5, 2) == 2.5
+    assert divide_numbers(5, 0) == "Error: Division by zero is not allowed."
+def test_power_numbers():
+    assert power_numbers(2, 3) == 8
+    assert power_numbers(5, 0) == 1
+    assert power_numbers(3, 2) == 9
+def test_modulo_numbers():
+    assert modulo_numbers(5, 3) == 2
+    assert modulo_numbers(10, 2) == 0
+    assert modulo_numbers(7, 4) == 3

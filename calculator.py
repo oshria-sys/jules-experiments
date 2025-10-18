@@ -1,43 +1,58 @@
-def add(a, b):
+# a python function to add two numbers
+def add_numbers(a, b):
     return a + b
-
-def subtract(a, b):
+# a python function to subtract two numbers
+def subtract_numbers(a, b):
     return a - b
-
-def multiply(a, b):
+# a python function to multiply two numbers
+def multiply_numbers(a, b):
     return a * b
-
-def divide(a, b):
+# a python function to divide two numbers
+def divide_numbers(a, b):
+    if b == 0:
+        return "Error: Division by zero is not allowed."
     return a / b
-
-def power(a, b):
+# a python function to calculate the power of a number
+def power_numbers(a, b):
     return a ** b
-
-def modulo(a, b):
+# a python function for modulo operation
+def modulo_numbers(a, b):
     return a % b
+# an interactive command line program to ask the user for two numbers and an operation
+def calculator():
+    print("Welcome to the calculator!")
 
-if __name__ == "__main__":
     operations = {
-        '+': add,
-        '-': subtract,
-        '*': multiply,
-        '/': divide,
-        '^': power,
-        '%': modulo
+        '1': ('Add', add_numbers),
+        '2': ('Subtract', subtract_numbers),
+        '3': ('Multiply', multiply_numbers),
+        '4': ('Divide', divide_numbers),
+        '5': ('Power', power_numbers),
+        '6': ('Modulo', modulo_numbers)
     }
 
-    try:
-        num1 = float(input("Enter the first number: "))
-        op_symbol = input(f"Enter an operation ({', '.join(operations.keys())}): ")
-        num2 = float(input("Enter the second number: "))
+    print("Select an operation:")
+    for key, (name, _) in operations.items():
+        print(f"{key}. {name}")
 
-        if op_symbol in operations:
-            operation_func = operations[op_symbol]
-            result = operation_func(num1, num2)
-            print(f'{num1} {op_symbol} {num2} = {result}')
+    while True:
+        choice = input(f"Enter the number of the operation (1-{len(operations)}) or 'q' to quit: ")
+        if choice == 'q':
+            print("Exiting the calculator. Goodbye!")
+            break
+
+        if choice in operations:
+            try:
+                num1 = float(input("Enter the first number: "))
+                num2 = float(input("Enter the second number: "))
+                _, operation_func = operations[choice]
+                result = operation_func(num1, num2)
+                print("Result:", result)
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+                continue
         else:
-            print(f"Invalid operation. Please use one of: {', '.join(operations.keys())}")
-    except ValueError:
-        print("Invalid input. Please enter valid numbers.")
-    except ZeroDivisionError:
-        print("Error: Cannot divide by zero.")
+            print("Invalid choice. Please try again.")
+
+# Uncomment the line below to run the calculator when this script is executed
+# calculator()
