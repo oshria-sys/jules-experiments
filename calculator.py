@@ -13,10 +13,13 @@ def divide(a, b):
 def power(a, b):
     return a ** b
 
+def modulo(a, b):
+    return a % b
+
 if __name__ == "__main__":
     try:
         num1 = float(input("Enter the first number: "))
-        op = input("Enter an operation (+, -, *, /, ^): ")
+        op = input("Enter an operation (+, -, *, /, ^, %): ")
         num2 = float(input("Enter the second number: "))
 
         if op == '+':
@@ -34,8 +37,11 @@ if __name__ == "__main__":
         elif op == '^':
             result = power(num1, num2)
             print(f'{num1} ^ {num2} = {result}')
+        elif op == '%':
+            result = modulo(num1, num2)
+            print(f'{num1} % {num2} = {result}')
         else:
-            print("Invalid operation. Please use +, -, *, /, or ^.")
+            print("Invalid operation. Please use +, -, *, /, ^, or %.")
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
     except ZeroDivisionError:
