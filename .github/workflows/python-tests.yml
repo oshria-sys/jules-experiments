@@ -51,7 +51,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
-```# filepath: /Users/oshria/gitHub/jules-experiments/.github/workflows/python-tests.yml
 name: CI and Deploy Pages
 
 on:
