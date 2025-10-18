@@ -17,31 +17,26 @@ def modulo(a, b):
     return a % b
 
 if __name__ == "__main__":
+    operations = {
+        '+': add,
+        '-': subtract,
+        '*': multiply,
+        '/': divide,
+        '^': power,
+        '%': modulo
+    }
+
     try:
         num1 = float(input("Enter the first number: "))
-        op = input("Enter an operation (+, -, *, /, ^, %): ")
+        op_symbol = input(f"Enter an operation ({', '.join(operations.keys())}): ")
         num2 = float(input("Enter the second number: "))
 
-        if op == '+':
-            result = add(num1, num2)
-            print(f'{num1} + {num2} = {result}')
-        elif op == '-':
-            result = subtract(num1, num2)
-            print(f'{num1} - {num2} = {result}')
-        elif op == '*':
-            result = multiply(num1, num2)
-            print(f'{num1} * {num2} = {result}')
-        elif op == '/':
-            result = divide(num1, num2)
-            print(f'{num1} / {num2} = {result}')
-        elif op == '^':
-            result = power(num1, num2)
-            print(f'{num1} ^ {num2} = {result}')
-        elif op == '%':
-            result = modulo(num1, num2)
-            print(f'{num1} % {num2} = {result}')
+        if op_symbol in operations:
+            operation_func = operations[op_symbol]
+            result = operation_func(num1, num2)
+            print(f'{num1} {op_symbol} {num2} = {result}')
         else:
-            print("Invalid operation. Please use +, -, *, /, ^, or %.")
+            print(f"Invalid operation. Please use one of: {', '.join(operations.keys())}")
     except ValueError:
         print("Invalid input. Please enter valid numbers.")
     except ZeroDivisionError:
